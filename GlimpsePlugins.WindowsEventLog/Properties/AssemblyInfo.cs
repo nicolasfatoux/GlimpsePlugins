@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GlimpsePlugins.WindowsEventLog")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A Glimpse plugin that displays Windows Event Log entries from the server")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nicolas Fatoux")]
 [assembly: AssemblyProduct("GlimpsePlugins.WindowsEventLog")]
-[assembly: AssemblyCopyright("Copyright © Nicolas Fatoux")]
+[assembly: AssemblyCopyright("Copyright © Nicolas Fatoux 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
