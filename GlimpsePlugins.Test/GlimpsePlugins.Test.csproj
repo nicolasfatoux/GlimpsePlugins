@@ -51,6 +51,9 @@
     <Reference Include="Glimpse.Mvc3">
       <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
+    <Reference Include="GlimpsePlugins.WindowsEventLog">
+      <HintPath>..\packages\GlimpsePlugins.WindowsEventLog.1.0.1.0\lib\net40\GlimpsePlugins.WindowsEventLog.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -161,12 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GlimpsePlugins.WindowsEventLog\GlimpsePlugins.WindowsEventLog.csproj">
-      <Project>{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}</Project>
-      <Name>GlimpsePlugins.WindowsEventLog</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
