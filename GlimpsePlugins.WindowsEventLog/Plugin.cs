@@ -10,113 +10,129 @@ using System.Collections;
 
 namespace GlimpsePlugins.WindowsEventLog
 {
-	[GlimpsePlugin]
-	public class Plugin : IGlimpsePlugin
-	{
-		/// <summary>
-		/// The maximum number of log entries to fetch.
-		/// </summary>
-		const int MaxEntries = 50;
+    [GlimpsePlugin]
+    public class Plugin : IGlimpsePlugin
+    {
+        /// <summary>
+        /// The maximum number of log entries to fetch.
+        /// </summary>
+        const int MaxEntries = 50;
 
-		/// <summary>
-		/// Gets the plugin data.
-		/// </summary>
-		/// <param name="context"></param>
-		/// <returns></returns>
-		public object GetData(HttpContextBase context)
-		{
-			var data = new List<object[]>();
+        /// <summary>
+        /// Gets the plugin data.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public object GetData(HttpContextBase context)
+        {
+            return ReadLogs().ToList();
+        }
 
-			// Event Log header
-			data.Add(new[] { "Log", "Entries" });
+        /// <summary>
+        /// Reads the event logs.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<object> ReadLogs()
+        {
+            // Header
+            yield return new[] { "Log", "Entries" };
 
-			// Event Log rows
-			foreach (var eventLog in EventLog.GetEventLogs())
-			{
-				List<object[]> entriesData = null;
-				try
-				{
-					if (eventLog.Entries.Count > 0)
-					{
-						int lastEntryIndex = eventLog.Entries.Count > MaxEntries ? eventLog.Entries.Count - MaxEntries : 0;
+            // Logs
+            foreach (var eventLog in EventLog.GetEventLogs())
+            {
+                object[] row = null;
 
-						entriesData = new List<object[]>();
+                try
+                {
+                    var entries = ReadEntries(eventLog).ToList();
 
-						// Entries header
-						entriesData.Add(new[] { "Level", "Date", "Source", "Event ID", "Category", "Message" });
+                    if (entries.Count() > 0)
+                        row = new object[] { eventLog.LogDisplayName, entries };
+                }
+                catch (SecurityException)
+                {
+                }
 
-						// Entries rows
-						for (int i = eventLog.Entries.Count - 1; i > lastEntryIndex; i--)
-						{
-							var entry = eventLog.Entries[i];
+                if (row != null)
+                    yield return row;
+            }
+        }
 
-							// Log Entry data
-							var entryData = new ArrayList() { entry.EntryType.ToString(), entry.TimeGenerated.ToString("G"), entry.Source, entry.InstanceId, entry.Category, entry.Message };
+        /// <summary>
+        /// Reads event log entries.
+        /// </summary>
+        /// <param name="log">The event log.</param>
+        /// <returns></returns>
+        private IEnumerable<object> ReadEntries(EventLog log)
+        {
+            if (log.Entries.Count > 0)
+            {
+                // Header
+                yield return new[] { "Level", "Date", "Source", "Event ID", "Category", "Message" };
 
-							// Meta data
-							string meta = GetMeta(entry);
-							if (meta != null)
-								entryData.Add(meta);
+                // Entries
+                int lastEntryIndex = log.Entries.Count > MaxEntries ? log.Entries.Count - MaxEntries : 0;
 
-							entriesData.Add(entryData.ToArray());
-						}
+                for (int i = log.Entries.Count - 1; i > lastEntryIndex; i--)
+                {
+                    var entry = log.Entries[i];
 
-						data.Add(new object[] { eventLog.Log, entriesData });
-					}
-				}
-				catch (SecurityException)
-				{
-				}
+                    // Log Entry data
+                    var entryData = new ArrayList() { entry.EntryType.ToString(), entry.TimeGenerated.ToString("G"), entry.Source, entry.InstanceId, entry.Category, entry.Message };
 
+                    // Meta data
+                    string meta = GetMeta(entry);
+                    if (meta != null)
+                        entryData.Add(meta);
 
-			}
+                    yield return entryData.ToArray();
+                }
+            }
+        }
 
-			return data;
-		}
+        /// <summary>
+        /// Gets the meta data for an EventLogEntry.
+        /// </summary>
+        /// <param name="eventLogEntry"></param>
+        /// <returns></returns>
+        private static string GetMeta(EventLogEntry eventLogEntry)
+        {
+            string meta = null;
+            switch (eventLogEntry.EntryType)
+            {
+                case EventLogEntryType.Error:
+                    meta = "error";
+                    break;
+                case EventLogEntryType.FailureAudit:
+                    meta = "fail";
+                    break;
+                case EventLogEntryType.Information:
+                    meta = "info";
+                    break;
+                case EventLogEntryType.SuccessAudit:
+                    break;
+                case EventLogEntryType.Warning:
+                    meta = "warn";
+                    break;
+                default:
+                    break;
+            }
+            return meta;
+        }
 
-		/// <summary>
-		/// Gets the meta data for an EventLogEntry.
-		/// </summary>
-		/// <param name="eventLogEntry"></param>
-		/// <returns></returns>
-		private static string GetMeta(EventLogEntry eventLogEntry)
-		{
-			string meta = null;
-			switch (eventLogEntry.EntryType)
-			{
-				case EventLogEntryType.Error:
-					meta = "error";
-					break;
-				case EventLogEntryType.FailureAudit:
-					meta = "fail";
-					break;
-				case EventLogEntryType.Information:
-					meta = "info";
-					break;
-				case EventLogEntryType.SuccessAudit:
-					break;
-				case EventLogEntryType.Warning:
-					meta = "warn";
-					break;
-				default:
-					break;
-			}
-			return meta;
-		}
+        /// <summary>
+        /// Gets the plugin name.
+        /// </summary>
+        public string Name
+        {
+            get { return "Windows Event Viewer"; }
+        }
 
-		/// <summary>
-		/// Gets the plugin name.
-		/// </summary>
-		public string Name
-		{
-			get { return "Windows Event Viewer"; }
-		}
-
-		/// <summary>
-		/// Initializes the plugin.
-		/// </summary>
-		public void SetupInit()
-		{
-		}
-	}
+        /// <summary>
+        /// Initializes the plugin.
+        /// </summary>
+        public void SetupInit()
+        {
+        }
+    }
 }
