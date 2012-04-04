@@ -11,7 +11,7 @@ using System.Collections;
 namespace GlimpsePlugins.WindowsEventLog
 {
     [GlimpsePlugin]
-    public class Plugin : IGlimpsePlugin
+    public class Plugin : IGlimpsePlugin, IProvideGlimpseStructuredLayout
     {
         /// <summary>
         /// The maximum number of log entries to fetch.
@@ -81,7 +81,7 @@ namespace GlimpsePlugins.WindowsEventLog
                     var entryData = new ArrayList() { entry.EntryType.ToString(), entry.TimeGenerated.ToString("G"), entry.Source, entry.InstanceId, entry.Category, entry.Message };
 
                     // Meta data
-                    string meta = GetMeta(entry);
+                    string meta = GetIndicator(entry);
                     if (meta != null)
                         entryData.Add(meta);
 
@@ -91,11 +91,11 @@ namespace GlimpsePlugins.WindowsEventLog
         }
 
         /// <summary>
-        /// Gets the meta data for an EventLogEntry.
+        /// Gets the indicator for an EventLogEntry.
         /// </summary>
         /// <param name="eventLogEntry"></param>
         /// <returns></returns>
-        private static string GetMeta(EventLogEntry eventLogEntry)
+        private static string GetIndicator(EventLogEntry eventLogEntry)
         {
             string meta = null;
             switch (eventLogEntry.EntryType)
@@ -120,12 +120,14 @@ namespace GlimpsePlugins.WindowsEventLog
             return meta;
         }
 
+
+
         /// <summary>
         /// Gets the plugin name.
         /// </summary>
         public string Name
         {
-            get { return "Windows Event Viewer"; }
+            get { return "Windows Event Logs"; }
         }
 
         /// <summary>
@@ -134,5 +136,35 @@ namespace GlimpsePlugins.WindowsEventLog
         public void SetupInit()
         {
         }
+
+        /// <summary>
+        /// Gets the layout.
+        /// </summary>
+        public GlimpseStructuredLayout StructuredLayout
+        {
+            get
+            {
+                return new GlimpseStructuredLayout{new GlimpseStructuredLayoutSection
+                {
+                    // Logs columns
+                    new GlimpseStructuredLayoutCell{Data=0,  Width="10%",},
+                    new GlimpseStructuredLayoutCell
+                    {
+                        Data=1,  Width="90%",
+                        Structure = new GlimpseStructuredLayout{new GlimpseStructuredLayoutSection
+                                    {
+                                        // Entries columns
+                                        new GlimpseStructuredLayoutCell{Data=0,  Width="10%",},
+                                        new GlimpseStructuredLayoutCell{Data=1,  Width="10%",},
+                                        new GlimpseStructuredLayoutCell{Data=2,  Width="10%",},
+                                        new GlimpseStructuredLayoutCell{Data=3,  Width="10%",},
+                                        new GlimpseStructuredLayoutCell{Data=4,  Width="10%",},
+                                        new GlimpseStructuredLayoutCell{Data=5,  Width="50%"},
+                                    }}
+                    }}
+                };
+            }
+        }
+
     }
 }
