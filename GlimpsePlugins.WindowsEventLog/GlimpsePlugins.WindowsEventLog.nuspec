@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/NicolasFatoux/GlimpsePlugins</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial version.</releaseNotes>
+    <releaseNotes>Better layout.</releaseNotes>
     <copyright>Copyright 2012</copyright>
     <tags>ASP.NET Web Glimpse</tags>
   </metadata>
