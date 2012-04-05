@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using Glimpse.Core.Extensibility;
 using System.Web;
-using System.DirectoryServices;
 using System.Collections;
+using Microsoft.Web.Administration;
+using System.IO;
 
 namespace GlimpsePlugins.IISLog
 {
@@ -21,19 +22,23 @@ namespace GlimpsePlugins.IISLog
         {
             yield return new object[] {"Log Path","Comment" };
 
-            DirectoryEntry W3SVC = new DirectoryEntry("IIS://localhost/w3svc");
-            foreach (DirectoryEntry site in W3SVC.Children)
+            ServerManager manager = new ServerManager();
+  
+            foreach (Site site in manager.Sites)
             {
-                if (site.SchemaClassName == "IIsWebServer")
-                {
-                    string LogFilePath = System.IO.Path.Combine(
-                        site.Properties["LogFileDirectory"].Value.ToString(),
-                        "W3CSVC" + site.Name);
+                string logFilePath = Environment.ExpandEnvironmentVariables(site.LogFile.Directory) + "\\W3svc" + site.Id.ToString();
+                yield return new object[] { site.Name, ReadLog(logFilePath) };
+            }    
+        }
 
-                    yield return new object[] { LogFilePath, site.Properties["ServerComment"].Value };
-                }
-            }
-    
+        private string ReadLog(string logPath)
+        {
+            FileStream stream =File.OpenRead(logPath);
+            if (stream.Length > 1000)
+                stream.Seek(1000, SeekOrigin.End);
+
+            StreamReader reader = new StreamReader(stream);            
+            return reader.ReadToEnd();
         }
 
         public string Name
