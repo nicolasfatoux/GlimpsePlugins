@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlimpsePlugins.IISLog", "Gl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlimpsePlugins.Test", "GlimpsePlugins.Test\GlimpsePlugins.Test.csproj", "{89681B4D-7C54-4252-8D8C-7AD507AD92A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceCounters", "PerformanceCounters\PerformanceCounters.csproj", "{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -170,6 +170,10 @@
       <Project>{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}</Project>
       <Name>GlimpsePlugins.IISLog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PerformanceCounters\PerformanceCounters.csproj">
+      <Project>{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}</Project>
+      <Name>PerformanceCounters</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

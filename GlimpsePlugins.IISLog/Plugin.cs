@@ -13,6 +13,8 @@ namespace GlimpsePlugins.IISLog
     [GlimpsePlugin]
     public class Plugin : IGlimpsePlugin
     {
+        const int bytesToRead = 10000;
+
         public object GetData(HttpContextBase context)
         {
             return Test().ToList();
@@ -20,25 +22,32 @@ namespace GlimpsePlugins.IISLog
 
         private IEnumerable<object> Test()
         {
-            yield return new object[] {"Log Path","Comment" };
+            yield return new object[] { "Log Path", "Comment" };
 
-            ServerManager manager = new ServerManager();
-  
-            foreach (Site site in manager.Sites)
+            string logFolder = @"C:\inetpub\logs\LogFiles\W3SVC1";
+
+            foreach (string file in Directory.EnumerateFiles(logFolder))
             {
-                string logFilePath = Environment.ExpandEnvironmentVariables(site.LogFile.Directory) + "\\W3svc" + site.Id.ToString();
-                yield return new object[] { site.Name, ReadLog(logFilePath) };
-            }    
+                yield return new object[] { file, ReadLog(file) };
+            }
         }
 
         private string ReadLog(string logPath)
         {
-            FileStream stream =File.OpenRead(logPath);
-            if (stream.Length > 1000)
-                stream.Seek(1000, SeekOrigin.End);
+            try
+            {
+                FileStream stream = File.Open(logPath, FileMode.Open, FileAccess.Read,FileShare.ReadWrite);
+                if (stream.Length > bytesToRead)
+                    stream.Seek(-bytesToRead, SeekOrigin.End);
 
-            StreamReader reader = new StreamReader(stream);            
-            return reader.ReadToEnd();
+                StreamReader reader = new StreamReader(stream);
+                reader.ReadLine();
+                return reader.ReadToEnd();
+            }
+            catch(IOException)
+            {
+                return string.Empty;
+            }
         }
 
         public string Name
