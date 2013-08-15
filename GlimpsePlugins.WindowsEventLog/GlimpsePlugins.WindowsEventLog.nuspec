@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/NicolasFatoux/GlimpsePlugins</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Improved layout.</releaseNotes>
+    <releaseNotes>Compatibility with new versions of Glimpse. Removed "(0)" for events with no category.</releaseNotes>
     <tags>ASP.NET Web Glimpse</tags>
   </metadata>
 </package>
