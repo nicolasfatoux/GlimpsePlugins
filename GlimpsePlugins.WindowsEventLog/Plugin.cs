@@ -10,8 +10,7 @@ using System.Collections;
 
 namespace GlimpsePlugins.WindowsEventLog
 {
-    [GlimpsePlugin]
-    public class Plugin : IGlimpsePlugin, IProvideGlimpseStructuredLayout
+    public class Plugin : TabBase, ITab
     {
         /// <summary>
         /// The maximum number of log entries to fetch.
@@ -23,7 +22,7 @@ namespace GlimpsePlugins.WindowsEventLog
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public object GetData(HttpContextBase context)
+        public override object GetData(ITabContext context)
         {
             return ReadLogs().ToList();
         }
@@ -125,7 +124,7 @@ namespace GlimpsePlugins.WindowsEventLog
         /// <summary>
         /// Gets the plugin name.
         /// </summary>
-        public string Name
+        public override string Name
         {
             get { return "Windows Event Logs"; }
         }
@@ -136,35 +135,5 @@ namespace GlimpsePlugins.WindowsEventLog
         public void SetupInit()
         {
         }
-
-        /// <summary>
-        /// Gets the layout.
-        /// </summary>
-        public GlimpseStructuredLayout StructuredLayout
-        {
-            get
-            {
-                return new GlimpseStructuredLayout{new GlimpseStructuredLayoutSection
-                {
-                    // Logs columns
-                    new GlimpseStructuredLayoutCell{Data=0,  Width="10%",},
-                    new GlimpseStructuredLayoutCell
-                    {
-                        Data=1,  Width="90%",
-                        Structure = new GlimpseStructuredLayout{new GlimpseStructuredLayoutSection
-                                    {
-                                        // Entries columns
-                                        new GlimpseStructuredLayoutCell{Data=0,  Width="10%",},
-                                        new GlimpseStructuredLayoutCell{Data=1,  Width="10%",},
-                                        new GlimpseStructuredLayoutCell{Data=2,  Width="10%",},
-                                        new GlimpseStructuredLayoutCell{Data=3,  Width="10%",},
-                                        new GlimpseStructuredLayoutCell{Data=4,  Width="10%",},
-                                        new GlimpseStructuredLayoutCell{Data=5,  Width="50%"},
-                                    }}
-                    }}
-                };
-            }
-        }
-
     }
 }
