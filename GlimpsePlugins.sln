@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB948109-6E08-4740-A008-AD2F02976D66}"
 	ProjectSection(SolutionItems) = preProject
 		LICENCE.txt = LICENCE.txt
@@ -15,11 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03B27E
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlimpsePlugins.IISLog", "GlimpsePlugins.IISLog\GlimpsePlugins.IISLog.csproj", "{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlimpsePlugins.Test", "GlimpsePlugins.Test\GlimpsePlugins.Test.csproj", "{89681B4D-7C54-4252-8D8C-7AD507AD92A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceCounters", "PerformanceCounters\PerformanceCounters.csproj", "{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,18 +27,10 @@ Global
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B6C81A0-96C9-4825-B147-EBC2D517AAA0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1C9EB0E-2637-4EB5-814C-14E0C00EE7DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
