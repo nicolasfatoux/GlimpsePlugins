@@ -77,7 +77,15 @@ namespace GlimpsePlugins.WindowsEventLog
                     var entry = log.Entries[i];
 
                     // Log Entry data
-                    var entryData = new ArrayList() { entry.EntryType.ToString(), entry.TimeGenerated.ToString("G"), entry.Source, entry.InstanceId, entry.Category, entry.Message };
+                    var entryData = new ArrayList() 
+                                    { 
+                                        entry.EntryType.ToString(), 
+                                        entry.TimeGenerated.ToString("G"), 
+                                        entry.Source, 
+                                        entry.InstanceId, 
+                                        entry.Category != "(0)" ? entry.Category:string.Empty, 
+                                        entry.Message 
+                                    };
 
                     // Meta data
                     string meta = GetIndicator(entry);
