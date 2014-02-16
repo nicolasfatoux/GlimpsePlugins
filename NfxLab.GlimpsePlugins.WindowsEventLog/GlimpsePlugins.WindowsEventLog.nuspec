@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Windows Event Log plugin for Glimpse</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.html</licenseUrl>
+    <projectUrl>https://github.com/NicolasFatoux/GlimpsePlugins</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Compatibility with new versions of Glimpse. Removed "(0)" for events with no category.</releaseNotes>
+    <tags>ASP.NET Web Glimpse</tags>
+  </metadata>
+</package>
