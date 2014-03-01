@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03B27E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfxLab.GlimpsePlugins.WindowsEventLog", "NfxLab.GlimpsePlugins.WindowsEventLog\NfxLab.GlimpsePlugins.WindowsEventLog.csproj", "{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfxLab.GlimpsePlugins.Test", "NfxLab.GlimpsePlugins.Test\NfxLab.GlimpsePlugins.Test.csproj", "{89681B4D-7C54-4252-8D8C-7AD507AD92A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfxLab.GlimpsePlugins.Test", "NfxLab.GlimpsePlugins.Test\NfxLab.GlimpsePlugins.Test.csproj", "{99A2288E-8145-4396-A205-B93BC162F588}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC65E694-E3F9-4E61-BFBF-5E836E4126CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89681B4D-7C54-4252-8D8C-7AD507AD92A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A2288E-8145-4396-A205-B93BC162F588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A2288E-8145-4396-A205-B93BC162F588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A2288E-8145-4396-A205-B93BC162F588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A2288E-8145-4396-A205-B93BC162F588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
