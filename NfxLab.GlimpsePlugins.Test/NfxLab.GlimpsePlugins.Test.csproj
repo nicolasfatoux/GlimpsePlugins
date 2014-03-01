@@ -59,9 +59,6 @@
     <Reference Include="Glimpse.Mvc5">
       <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
     </Reference>
-    <Reference Include="GlimpsePlugins.WindowsEventLog">
-      <HintPath>..\packages\GlimpsePlugins.WindowsEventLog.1.2.0.0\lib\net40\GlimpsePlugins.WindowsEventLog.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -243,6 +240,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NfxLab.GlimpsePlugins.WindowsEventLog\NfxLab.GlimpsePlugins.WindowsEventLog.csproj">
+      <Project>{ec65e694-e3f9-4e61-bfbf-5e836e4126cb}</Project>
+      <Name>NfxLab.GlimpsePlugins.WindowsEventLog</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
