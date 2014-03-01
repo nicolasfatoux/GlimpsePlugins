@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>GlimpsePlugins.WindowsEventLog</id>
-    <version>2.0.0-alpha</version>
+    <version>2.0.0</version>
     <title>Windows Event Log plugin for Glimpse</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
