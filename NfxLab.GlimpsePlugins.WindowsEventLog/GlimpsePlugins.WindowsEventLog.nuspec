@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
+    <id>GlimpsePlugins.WindowsEventLog</id>
+    <version>2.0.0-alpha</version>
     <title>Windows Event Log plugin for Glimpse</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/NicolasFatoux/GlimpsePlugins</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Compatibility with new versions of Glimpse. Removed "(0)" for events with no category.</releaseNotes>
+    <releaseNotes>Refactoring.</releaseNotes>
     <tags>ASP.NET Web Glimpse</tags>
   </metadata>
 </package>
